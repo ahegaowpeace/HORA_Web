@@ -6,6 +6,8 @@ RUN yum -y install nodejs
 
 RUN npm init -y
 RUN npm install express --save
+RUN npm install ejs --save
 
 COPY ./index.js /myapp
+COPY ./templates/ /myapp/templates/
 CMD ["/sbin/init"]

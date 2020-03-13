@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 /*          index.ejs           */
 /********************************/
 app.get('/', function (req, res) {
-        res.send('index.ejs');
+        return res.render('index');
 });
 
 /********************************/
