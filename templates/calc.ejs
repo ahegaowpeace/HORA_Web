@@ -3,6 +3,7 @@
 <% var hansu = 0; %>
 
 <!-- 配列数１の時str型になる対応が必要 -->
+<!--    上記の場合[1]が一文字になる    -->
 <!--              １翻加算             -->
 <% if (data['1han']) { %>
 <% var hanNum = data['1han'].length; %>
@@ -19,6 +20,33 @@
 <% hanNum = 1; %>
 <% } %>
 <% hansu = hansu + (hanNum * 2); %>
+<% } %>
+
+<!--              ３翻加算             -->
+<% if (data['3han']) { %>
+<% hanNum = data['3han'].length; %>
+<% if (data['3han'][1].length == 1) { %>
+<% hanNum = 1; %>
+<% } %>
+<% hansu = hansu + (hanNum * 3); %>
+<% } %>
+
+<!--              ４翻加算             -->
+<% if (data['4han']) { %>
+<% hanNum = data['4han'].length; %>
+<% if (data['4han'][1].length == 1) { %>
+<% hanNum = 1; %>
+<% } %>
+<% hansu = hansu + (hanNum * 4); %>
+<% } %>
+
+<!--              ６翻加算             -->
+<% if (data['6han']) { %>
+<% hanNum = data['6han'].length; %>
+<% if (data['6han'][1].length == 1) { %>
+<% hanNum = 1; %>
+<% } %>
+<% hansu = hansu + (hanNum * 6); %>
 <% } %>
 
 <% console.log(data) %>
