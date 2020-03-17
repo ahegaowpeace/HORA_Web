@@ -27,3 +27,14 @@
 - 「docker exec コンテナ名 node /myapp/index.js」を実行する
 	- ~~Dockerfile内で実行する方法を調査中~~
 	- CloudFormationで代用
+
+# コマンド
+※CloudFormationのUserDataで自動化済み
+
+```
+yum -y update; yum -y install git docker; systemctl start docker;
+git clone 【リポジトリURL】
+cd HORA_Web
+docker build -t nodejs .
+docker run -itd --name nodejs --privileged -p 3000:3000 nodejs /sbin/init
+```
