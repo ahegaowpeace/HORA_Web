@@ -29,6 +29,7 @@
 	- CloudFormationで代用
 
 # コマンド
+※CloudFormationのUserDataで自動化済み
 
 ```
 yum -y update; yum -y install git docker; systemctl start docker;
