@@ -1,0 +1,43 @@
+# Template Version
+AWSTemplateFormatVersion: "2010-09-09"
+
+# Description for Template
+Description: Provision EC2
+
+# Input Parameters
+Parameters:
+  KeyName:
+    Description: The EC2 Key Pair to allow SSH access to the instance
+    Type: "AWS::EC2::KeyPair::KeyName"
+
+  MyIP:
+    Description: IP address allowed to access EC2
+    Type: String
+
+# Resources Template
+Resources:
+  EC2: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: ami-06a46da680048c8ae
+      KeyName: !Ref KeyName
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - sg-087cf2a6e41c93abd
+      UserData: !Base64 |
+        #!/bin/bash
+        sudo yum -y update; yum -y install git docker; systemctl start docker;
+        git clone https://github.com/ahegaowpeace/HORA_Web.git
+        cd HORA_Web
+        sudo docker build -t nodejs .
+        docker run -itd --name nodejs --privileged -p 3000:3000 nodejs /sbin/init
+        docker exec nodejs node /myapp/index.js &
+      Tags:
+          - Key: Name
+            Value: labo_nodejs
+
+# Outputs Parameters
+Outputs:
+  EC2PublicIP:
+    Value: !GetAtt EC2.PublicIp
+    Description: Public IP of EC2 instance

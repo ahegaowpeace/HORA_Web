@@ -16,8 +16,9 @@
 
 - index.js
 	- NODE.js実行プログラム
-- start.sh
-	- 複数CMD実行シェル
+- CloudFromation.yml
+	- AWSスタック作成用
+	- UserDataのシェル実行確認済み
 
 # 諸注意
 
