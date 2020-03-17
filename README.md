@@ -25,4 +25,5 @@
 - DockerfileでCMDを記述した場合はコンテナ起動時に引数でコマンドを渡さない
 	- 上書きされる
 - 「docker exec コンテナ名 node /myapp/index.js」を実行する
-	- Dockerfile内で実行する方法を調査中
+	- ~~Dockerfile内で実行する方法を調査中~~
+	- CloudFormationで代用
