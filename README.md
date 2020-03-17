@@ -30,10 +30,10 @@
 
 # コマンド
 
-`
+```
 yum -y update; yum -y install git docker; systemctl start docker;
 git clone 【リポジトリURL】
 cd HORA_Web
 docker build -t nodejs .
 docker run -itd --name nodejs --privileged -p 3000:3000 nodejs /sbin/init
-`
+```
