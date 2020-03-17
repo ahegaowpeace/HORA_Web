@@ -1,6 +1,8 @@
-<h1>func</h1>
-<% var fusu = 0; %>
+<h1>計算結果</h1>
+<% var fusu = 20; %>
 <% var hansu = 0; %>
+<% var temp = 0; %>
+<% var wa = 0; %>
 
 <!-- 配列数１の時str型になる対応が必要 -->
 <!--    上記の場合[1]が一文字になる    -->
@@ -49,12 +51,55 @@
 <% hansu = hansu + (hanNum * 6); %>
 <% } %>
 
-<!-- 雀頭符数判定  -->
 <!-- 上り符数判定  -->
-<!-- 待ち符数判定  -->
+<% if (data.agari === 'lon') { %>
+<% fusu = fusu + 10 %>
+<% } else if (data.agari === 'tsumo') { %>
+<% fusu = fusu + 2 %>
+<% } %>
+
 <!-- 面子(中張牌)符数判定  -->
+<% if (data.chMinko != 0) { %>
+<% fusu = fusu + (data.chMinko * 2) %>
+<% } %>
+<% if (data.chAnko != 0) { %>
+<% fusu = fusu + (data.chAnko * 4) %>
+<% } %>
+<% if (data.chMinkan != 0) { %>
+<% fusu = fusu + (data.chMinkan * 8) %>
+<% } %>
+<% if (data.chAnkan != 0) { %>
+<% fusu = fusu + (data.chAnkan * 16) %>
+<% } %>
+
 <!-- 面子(幺九牌)符数判定  -->
+<% if (data.yoMinko != 0) { %>
+<% fusu = fusu + (data.yoMinko * 4) %>
+<% } %>
+<% if (data.yoAnko != 0) { %>
+<% fusu = fusu + (data.yoAnko * 8) %>
+<% } %>
+<% if (data.yoMinkan != 0) { %>
+<% fusu = fusu + (data.yoMinkan * 16) %>
+<% } %>
+<% if (data.yoAnkan != 0) { %>
+<% fusu = fusu + (data.yoAnkan * 32) %>
+<% } %>
+
+<!-- 雀頭符数判定  -->
+<% if (data.janto === 'jibasanngen') { %>
+<% fusu = fusu + 2 %>
+<% } %>
+<% if (data.janto === 'renpu') { %>
+<% fusu = fusu + 2 %>
+<% } %>
+
+<!-- 待ち符数判定  -->
+<% if (data.machi === 'penkantanno') { %>
+<% fusu = fusu + 2 %>
+<% } %>
 
 <% console.log(data) %>
 <% console.log(hansu) %>
+<% console.log(fusu) %>
 
