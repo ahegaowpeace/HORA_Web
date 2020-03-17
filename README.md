@@ -19,6 +19,13 @@
 - CloudFromation.yml
 	- AWSスタック作成用
 	- UserDataのシェル実行確認済み
+- templates
+	- form.ejs
+		- index.ejsから呼ばれる
+		- 計算ページ
+	- calc.ejs
+		- form.ejsから呼ばれる
+		- 計算処理
 
 # 諸注意
 
