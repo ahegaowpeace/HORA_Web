@@ -2,7 +2,7 @@
 <% var fusu = 20; %>
 <% var hansu = 0; %>
 <% var temp = 0; %>
-<% var total = 0; %>
+<% var wa = 0; %>
 
 <!-- 配列数１の時str型になる対応が必要 -->
 <!--    上記の場合[1]が一文字になる    -->
@@ -49,6 +49,16 @@
 <% hanNum = 1; %>
 <% } %>
 <% hansu = hansu + (hanNum * 6); %>
+<% } %>
+
+<!-- ドラ加算 -->
+<% if (data.dora != 0) { %>
+<% hansu = hansu + data.dora %>
+<% } %>
+
+<!-- 鳴き減算 -->
+<% if (data.naki === 'ari') { %>
+<% hansu = hansu - 1 %>
 <% } %>
 
 <!-- 上り符数判定  -->
@@ -99,10 +109,26 @@
 <% fusu = fusu + 2 %>
 <% } %>
 
-<!-- 計算 -->
-<!-- 符丸め-->
+<!-- 符丸め -->
+<% fusu = (Math.ceil(fusu / 10) * 10) %>
+<!--  子  -->
+<% if (data.oyako === 'ko') { %>
+<% wa = fusu * 4 * (2 ** hansu) %>
+<% } %>
+<!--  親  -->
+<% if (data.oyako === 'oya') { %>
+<% wa = fusu * 6 * (2 ** hansu) %>
+<% } %>
+<!--  丸め  -->
+<% wa = (Math.ceil(wa / 100) * 100) %>
 
-<% console.log(data) %>
+<!-- 0翻判定 -->
+<% if (hansu <= 0) { %>
+<% wa = 0 %>
+<% } %>
+
 <% console.log(hansu) %>
 <% console.log(fusu) %>
+<% console.log(wa) %>
+<% console.log(data) %>
 
