@@ -1,8 +1,9 @@
 <h1>計算結果</h1>
 <% var fusu = 20; %>
 <% var hansu = 0; %>
-<% var temp = 0; %>
-<% var wa = 0; %>
+<% var kisoten = 0; %>
+<% var koHarai = 0; %>
+<% var oyaHarai = 0; %>
 
 <!-- 配列数１の時str型になる対応が必要 -->
 <!--    上記の場合[1]が一文字になる    -->
@@ -113,22 +114,95 @@
 <% fusu = (Math.ceil(fusu / 10) * 10) %>
 <!--  子  -->
 <% if (data.oyako === 'ko') { %>
-<% wa = fusu * 4 * (2 ** hansu) %>
+<% kisoten = fusu * 4 * (2 ** hansu) %>
 <% } %>
 <!--  親  -->
 <% if (data.oyako === 'oya') { %>
-<% wa = fusu * 6 * (2 ** hansu) %>
+<% kisoten = fusu * 6 * (2 ** hansu) %>
 <% } %>
 <!--  丸め  -->
-<% wa = (Math.ceil(wa / 100) * 100) %>
+<% kisoten = (Math.ceil(kisoten / 100) * 100) %>
 
 <!-- 0翻判定 -->
 <% if (hansu <= 0) { %>
-<% wa = 0 %>
+<% kisoten = 0 %>
+<% } %>
+
+<!-- 満貫以上判定（子） -->
+<% if (data.oyako === 'ko') { %>
+<% if (hansu == 3 && fusu >= 70) { %>
+<% kisoten = 8000 %>
+<% } %>
+<% if (hansu == 4 && (40 <= fusu && fusu <= 60)) { %>
+<% kisoten = 8000 %>
+<% } %>
+<% if (hansu == 5) { %>
+<% kisoten = 8000 %>
+<% } %>
+<% if (hansu == 6 || hansu == 7) { %>
+<% kisoten = 12000 %>
+<% } %>
+<% if (8 <= hansu && hansu <= 10) { %>
+<% kisoten = 16000 %>
+<% } %>
+<% if (11 <= hansu && hansu <= 12) { %>
+<% kisoten = 24000 %>
+<% } %>
+<% if (13 <= hansu) { %>
+<% kisoten = 32000 %>
+<% } %>
+<% } %>
+
+<!-- 満貫以上判定（親） -->
+<% if (data.oyako === 'oya') { %>
+<% if (hansu == 3 && fusu >= 70) { %>
+<% kisoten = 12000 %>
+<% } %>
+<% if (hansu == 4 && (40 <= fusu && fusu <= 60)) { %>
+<% kisoten = 12000 %>
+<% } %>
+<% if (hansu == 5) { %>
+<% kisoten = 12000 %>
+<% } %>
+<% if (hansu == 6 || hansu == 7) { %>
+<% kisoten = 18000 %>
+<% } %>
+<% if (8 <= hansu && hansu <= 10) { %>
+<% kisoten = 24000 %>
+<% } %>
+<% if (11 <= hansu && hansu <= 12) { %>
+<% kisoten = 36000 %>
+<% } %>
+<% if (13 <= hansu) { %>
+<% kisoten = 48000 %>
+<% } %>
+<% } %>
+
+<!-- 表示用計算（親） -->
+<% if (data.oyako === 'oya') { %>
+<% if (data.agari === 'tsumo') { %>
+<% koHarai = kisoten / 4; %>
+<% oyaHarai = ''; %>
+<% } else if (data.agari === 'lon') { %>
+<% koHarai = kisoten; %>
+<% oyaHarai = ''; %>
+<% } %>
+<% } %>
+<%  %>
+<% <!-- 表示用計算（子） --> %>
+<% if (data.oyako === 'ko') { %>
+<% if (data.agari === 'tsumo') { %>
+<% koHarai = kisoten / 4; %>
+<% oyaHarai = kisoten / 2; %>
+<% } else if (data.agari === 'lon') { %>
+<% koHarai = kisoten; %>
+<% oyaHarai = ''; %>
+<% } %>
 <% } %>
 
 <% console.log(hansu) %>
 <% console.log(fusu) %>
-<% console.log(wa) %>
+<% console.log(kisoten) %>
+<% console.log(koHarai) %>
+<% console.log(oyaHarai) %>
 <% console.log(data) %>
-
