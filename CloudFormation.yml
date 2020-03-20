@@ -30,7 +30,7 @@ Resources:
         git clone https://github.com/ahegaowpeace/HORA_Web.git
         cd HORA_Web
         sudo docker build -t nodejs .
-        docker run -itd --name nodejs --privileged -p 3000:3000 nodejs /sbin/init
+        docker run -itd --name nodejs --privileged -p 3000:3000 nodejs
         docker exec nodejs node /myapp/index.js &
       Tags:
           - Key: Name
