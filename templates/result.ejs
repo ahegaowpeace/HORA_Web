@@ -1,3 +1,12 @@
+<style type="text/css">
+.box {
+}
+.item {
+	width: 40%;
+	float: left
+}
+</style>
+
 <!--   計算関数読込   -->
 <%- include('./calc', data); %>
 <!---------------------->
@@ -35,35 +44,35 @@
 
 <p>面子（中張牌）：
 	<ul>
-		<li>明刻：<%= data.chMinko %></li>
-		<li>暗刻：<%= data.chAnko %></li>
-		<li>明槓：<%= data.chMinkan %></li>
-		<li>暗槓：<%= data.chAnkan %></li>
+		<li>明刻（2符） ：<%= data.chMinko %></li>
+		<li>暗刻（4符） ：<%= data.chAnko %></li>
+		<li>明槓（8符） ：<%= data.chMinkan %></li>
+		<li>暗槓（16符）：<%= data.chAnkan %></li>
 	</ul></p>
 
 <p>面子（幺九牌）：
 	<ul>
-		<li>明刻：<%= data.yoMinko %></li>
-		<li>暗刻：<%= data.yoAnko %></li>
-		<li>明槓：<%= data.yoMinkan %></li>
-		<li>暗槓：<%= data.yoAnkan %></li>
+		<li>明刻（4符） ：<%= data.yoMinko %></li>
+		<li>暗刻（8符） ：<%= data.yoAnko %></li>
+		<li>明槓（16符）：<%= data.yoMinkan %></li>
+		<li>暗槓（32符）：<%= data.yoAnkan %></li>
 	</ul></p>
 
 <p>ドラ数　　　　：<%= data.dora %></p>
 
 <p>雀頭　　　　　：
 <% if (data.janto === 'jibasanngen') { %>
-自風/場風/三元
+自風/場風/三元（2符)
 <% } else if (data.janto === 'renpu') { %>
-連風
+連風（2符）
 <% } else if (data.janto === 'sonota') { %>
-数/客風
+数/客風（0符）
 <% } %></p>
 
 <p>待ち　　　　　：
 <% if (data.machi === 'penkantanno') { %>
-辺張/嵌張/単騎/ノベタン
+辺張/嵌張/単騎/ノベタン（2符）
 <% } else if (data.machi === 'sonota') { %>
-両面/シャボ
+両面/シャボ（0符）
 <% } %></p>
 
