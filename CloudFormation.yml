@@ -4,7 +4,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 # Description for Template
 Description: Provision EC2
 
-# Input Parameters
+# CloudFormation実行時入力パラメータ
 Parameters:
   KeyName:
     Description: The EC2 Key Pair to allow SSH access to the instance
