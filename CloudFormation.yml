@@ -2,7 +2,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
 # Description for Template
-Description: Provision EC2
+Description: Hora_Web
 
 # CloudFormation実行時入力パラメータ
 Parameters:
